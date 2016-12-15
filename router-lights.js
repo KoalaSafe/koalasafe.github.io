@@ -74,9 +74,13 @@ function Leds (wan, lan, wlan) {
     ];
 
     var normal = [
-        { e: wan, p: { fill: greenColour }, o: { duration: 50, complete: function(elements) {  $(elements).css({"fill": offColour}); } }},
-        { e: lan, p: { fill: greenColour }, o: { duration: 90, sequenceQueue:false, complete: function(elements) {  $(elements).css({"fill": offColour}); } }},
-        { e: wlan, p: { fill: redColour }, o: { duration: 120, sequenceQueue:false, complete: function(elements) {  $(elements).css({"fill": offColour}); } }}
+        { e: wan, p: { fill: greenColour }, o: { duration: 50, complete: function(elements) { 
+            console.log("test")
+             $(elements).css({"fill": offColour}); } }},
+        { e: lan, p: { fill: greenColour }, o: { duration: 90, sequenceQueue:false, complete: function(elements) { 
+             $(elements).css({"fill": offColour}); } }},
+        { e: wlan, p: { fill: redColour }, o: { duration: 120, sequenceQueue:false, complete: function(elements) {  
+            $(elements).css({"fill": offColour}); } }}
     ];
 
     var states = [
@@ -100,7 +104,7 @@ function Leds (wan, lan, wlan) {
      this.run = function(name, sequence){
         var self = this;
         console.log("Running sequence " + name);
-        var completed = [{ e: this.wan, p:{opacity: 1}, o: {complete: function(){
+        var completed = [{ e: wan, p:{opacity: 1}, o: {complete: function(){
             console.log("Completed sequence " + name);
             self.run(name, sequence);
         }}}];
